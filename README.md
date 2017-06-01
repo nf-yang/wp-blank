@@ -8,7 +8,7 @@ Wordpress blank project to use [wp-core](https://github.com/nf-yang/wp-core).
 * [wp-core](https://github.com/nf-yang/wp-core) installed.
 * Environment variable `WP_CORE_DIR` has been set to the path of wordpress core. 
 
-## Installation
+## Usage 
 
 ### 1. clone the blank project
 ```
