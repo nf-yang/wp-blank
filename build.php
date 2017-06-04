@@ -68,6 +68,7 @@ EOT
   mkPath($publicPath . DS . 'wp-content' . DS . 'uploads', 0766);
 
   mkLink('wp-content/languages');
+  mkLink('wp-content/plugins');
 } else {
   die($corePath. ' not exists! '. PHP_EOL);
 }
