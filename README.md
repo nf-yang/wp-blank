@@ -1,5 +1,6 @@
 # wp-blank
 Wordpress blank project to use [wp-core](https://github.com/nf-yang/wp-core).
+These two combination can make a shared Wordpress system. (gitted and reusable)
 
 ## Requirements
 
@@ -17,7 +18,10 @@ cd wp-blank
 ```
 
 ### 2. run the build script
-`php run build.php`
+```
+export WP_CORE_DIR=/path/to/wp-core/wordpress #if no WP_CORE_DIR defined
+php run build.php
+```
 
 This will create some symbolic links and files for you.
 ![The file structure](https://raw.githubusercontent.com/wiki/nf-yang/wp-blank/images/wp-blank-structure.png)
