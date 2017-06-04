@@ -6,9 +6,11 @@ $corePath = trim(fgets(STDIN));
 $currentPath = dirname(__FILE__);
 $publicPath = $currentPath .  DS . 'public';
 
-function mkPath($path) {
-  if (!file_exists($path))
-    mkdir($path, 0755);
+function mkPath($path, $mode=0755) {
+  if (!file_exists($path)) {
+    mkdir($path, $mode);
+  }
+  chmod($path, $mode);
 }
 
 function mkLink($name) {
@@ -23,7 +25,7 @@ if (empty($corePath))
   $corePath = getenv('WP_CORE_DIR');
 if (file_exists($corePath)) {
   if (!file_exists($corePath . DS . 'wp-config-sample.php'))
-    die($corePath . 'is not a wordpress directory! Input the full path which contains wp-config-sample.php');
+    die($corePath . ' is not a wordpress directory! Input the full path which contains wp-config-sample.php'. PHP_EOL);
 
   mkPath($publicPath);
   copy($corePath . DS. 'wp-config-sample.php' , $currentPath . DS .'wp-config-sample.php');
@@ -63,7 +65,9 @@ EOT
   mkPath($publicPath . DS . 'wp-content');
   mkPath($publicPath . DS . 'wp-content'. DS . 'themes');
   exec('cp -r '. $corePath . DS . 'wp-content'. DS .'themes'. DS . 'twentyseventeen' . ' ' . $publicPath . DS . 'wp-content'.DS.'themes'.DS);
+  mkPath($publicPath . DS . 'wp-content' . DS . 'uploads', 0766);
 
+  mkLink('wp-content/languages');
 } else {
   die($corePath. ' not exists! '. PHP_EOL);
 }
